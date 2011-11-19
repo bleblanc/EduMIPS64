@@ -46,8 +46,8 @@ public class BNEZ extends FlowControl_IType
 		name ="BNEZ";
 	}
 
-	public void ID()
-		throws RAWException, IrregularWriteOperationException, IrregularStringOfBitsException, JumpException, TwosComplementSumException 	
+	public void IF()
+		throws IrregularWriteOperationException, IrregularStringOfBitsException, JumpException, TwosComplementSumException //RAWException,  	
 	{
 		//getting registers rs and rt
 		if(cpu.getRegister(params.get(RS_FIELD)).getWriteSemaphore() > 0)
