@@ -1,0 +1,18 @@
+\BOOKMARK [0][-]{chapter.1}{Formato dei file sorgenti}{}
+\BOOKMARK [1][-]{section.1.1}{La sezione .data}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{La sezione .code}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{Il comando \043include}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Il set di istruzioni}{}
+\BOOKMARK [1][-]{section.2.1}{Le istruzioni ALU}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Istruzioni load/store}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Istruzioni di controllo del flusso}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{L'istruzione SYSCALL}{chapter.2}
+\BOOKMARK [1][-]{section.2.5}{Altre istruzioni}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{L'interfaccia utente}{}
+\BOOKMARK [1][-]{section.3.1}{La barra dei men\371}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Finestre}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Finestre di dialogo}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Opzioni da riga di comando}{chapter.3}
+\BOOKMARK [1][-]{section.3.5}{Eseguire EduMIPS64}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Listati di esempio}{}
+\BOOKMARK [1][-]{section.4.1}{SYSCALL}{chapter.4}
