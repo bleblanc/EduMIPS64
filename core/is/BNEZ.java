@@ -47,7 +47,7 @@ public class BNEZ extends FlowControl_IType
 	}
 
 	public void IF()
-		throws IrregularWriteOperationException, IrregularStringOfBitsException, JumpException, TwosComplementSumException //RAWException,  	
+		throws RAWException, IrregularWriteOperationException, IrregularStringOfBitsException, JumpException, TwosComplementSumException	
 	{
 		//getting registers rs and rt
 		if(cpu.getRegister(params.get(RS_FIELD)).getWriteSemaphore() > 0)
@@ -56,7 +56,7 @@ public class BNEZ extends FlowControl_IType
 		String zero = Converter.positiveIntToBin(64, 0);
 		//converting offset into a signed binary value of 64 bits in length
 		BitSet64 bs=new BitSet64();
-		bs.writeHalf(params.get(OFFSET_FIELD));
+		//bs.writeHalf(params.get(OFFSET_FIELD));
 		String offset=bs.getBinString();
 		boolean condition = ! rs.equals(zero);
 		if(condition)
