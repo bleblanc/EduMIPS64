@@ -26,7 +26,6 @@ public class Predictor {
 	}
 	
 	public boolean makePrediction(long instrAddr) {	
-		
 		int row = (int) instrAddr % 4096;
 		int col = selectColumn(lastBranch);
 		
@@ -37,6 +36,8 @@ public class Predictor {
 		} else {
 			return true;
 		}
+		
+		
 	}	
 	
 	//select the state column based on the last branch
@@ -53,12 +54,10 @@ public class Predictor {
 			case N0:
 				if (outcome) {
 					state = State.N1;
-				} else {
-					state = State.N0;
 				}
 			case N1:
 				if (outcome) {
-					state = State.T0;
+					state = State.T1;
 				} else {
 					state = State.N0;
 				}
@@ -66,12 +65,10 @@ public class Predictor {
 				if (outcome) {
 					state = State.T1;
 				} else {
-					state = State.N1;
+					state = State.N0;
 				}
 			case T1:
-				if (outcome) {
-					state = State.T1;
-				} else {
+				if (!outcome) {
 					state = State.T0;
 				}					
 		}

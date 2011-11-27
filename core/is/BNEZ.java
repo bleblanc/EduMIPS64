@@ -46,10 +46,11 @@ public class BNEZ extends FlowControl_IType
 		name ="BNEZ";
 	}
 
-	public void IF()
+	public void ID()
 		throws RAWException, IrregularWriteOperationException, IrregularStringOfBitsException, JumpException, TwosComplementSumException	
 	{
 		//getting registers rs and rt
+		//don't want to run this code again in ID, comment out? ***
 		if(cpu.getRegister(params.get(RS_FIELD)).getWriteSemaphore() > 0)
 			throw new RAWException();
 		String rs=cpu.getRegister(params.get(RS_FIELD)).getBinString();
@@ -59,7 +60,7 @@ public class BNEZ extends FlowControl_IType
 		//bs.writeHalf(params.get(OFFSET_FIELD));
 		String offset=bs.getBinString();
 		boolean condition = ! rs.equals(zero);
-		if(condition)
+		if(condition) //we need to know the prediction here? ***
 		{
 			String pc_new="";
 			Register pc=cpu.getPC();
@@ -74,7 +75,10 @@ public class BNEZ extends FlowControl_IType
 			pc_new=InstructionsUtils.twosComplementSum(pc_old,offset);
 			pc.setBits(pc_new,0);
 
-			throw new JumpException(); 
+			//if prediction not correct
+			
+			
+			throw new JumpException();
 		}
 	}
 	public void pack() throws IrregularStringOfBitsException {

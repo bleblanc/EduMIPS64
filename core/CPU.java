@@ -44,8 +44,11 @@ public class CPU
 
     /** Pipeline status*/
     public enum PipeStatus {IF, ID, EX, MEM, WB};
-
-	/** CPU status.
+    
+    private Predictor predictor = new Predictor(); //***
+    private boolean outcome = false; //outcome of the current branch instruction ***
+    
+    /** CPU status.
 	 * 	READY - the CPU has been initialized but the symbol table hasn't been
 	 *  already filled by the Parser. This means that you can't call the step()
 	 *  method, or you'll get a StoppedCPUException.
@@ -265,6 +268,8 @@ public class CPU
 			pipe.put(PipeStatus.MEM, pipe.get(PipeStatus.EX));
 
 			// ID
+			//we probably don't want to check for a branch again here? ***
+			//we don't want to throw a jumpException again...
 			currentPipeStatus = PipeStatus.ID;
 			if(pipe.get(PipeStatus.ID)!=null)
 				pipe.get(PipeStatus.ID).ID();
@@ -285,8 +290,15 @@ public class CPU
 						logger.info("breaking = 1");
 					}
 				}
-				pipe.put(PipeStatus.ID, pipe.get(PipeStatus.IF));
+				pipe.put(PipeStatus.ID, pipe.get(PipeStatus.IF));				
 				pipe.put(PipeStatus.IF, mem.getInstruction(pc));
+				if((pipe.get(PipeStatus.IF)) instanceof BNEZ) { //***
+					int instrAddr = mem.getInstructionIndex(pipe.get(PipeStatus.IF)); //***
+					bool pred = predictor.makePrediction(instrAddr); //***
+					predictor.updateFSM(outcome, terminate); //***
+				}
+				//if we need to call the branch prediction code here ***
+				//else to get the correct PC ***
 				old_pc.writeDoubleWord((pc.getValue()));
 				pc.writeDoubleWord((pc.getValue())+4);
 			}
