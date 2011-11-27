@@ -49,7 +49,7 @@ public class Predictor {
 		}
 	}
 	
-	private void updateFSM(State state, boolean outcome) {
+	public void updateFSM(State state, boolean outcome) {
 		switch (state) {
 			case N0:
 				if (outcome) {

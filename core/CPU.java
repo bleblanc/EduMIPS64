@@ -293,9 +293,9 @@ public class CPU
 				pipe.put(PipeStatus.ID, pipe.get(PipeStatus.IF));				
 				pipe.put(PipeStatus.IF, mem.getInstruction(pc));
 				if((pipe.get(PipeStatus.IF)) instanceof BNEZ) { //***
-					int instrAddr = mem.getInstructionIndex(pipe.get(PipeStatus.IF)); //***
-					bool pred = predictor.makePrediction(instrAddr); //***
-					predictor.updateFSM(outcome, terminate); //***
+					long instrAddr = pc.getValue(); //***
+					boolean pred = predictor.makePrediction(instrAddr); //***
+					predictor.updateFSM(state, outcome); //***
 				}
 				//if we need to call the branch prediction code here ***
 				//else to get the correct PC ***
